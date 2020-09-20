@@ -1,4 +1,4 @@
-# jianfan
+# Jiǎnfán
 
 ## Project setup
 ```
