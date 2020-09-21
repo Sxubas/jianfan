@@ -44,6 +44,7 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  font-size: 1.24rem;
   box-sizing: border-box;
 
   display: flex;

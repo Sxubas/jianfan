@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Login from '../views/Login.vue';
 import Home from '../views/Home.vue';
 import Learn from '../views/Learn.vue';
 import Practice from '../views/Practice.vue';
@@ -30,6 +29,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/about',
     name: 'About',
     component: About,
+  },
+  {
+    path: '/welcome',
+    name: 'Welcome',
+    component: () => import(/* webpackChunkName: "welcome" */ '../views/Welcome/Welcome.vue'),
+  },
+  {
+    path: '/welcome/characters',
+    name: 'Enter Known Characters',
+    component: () => import(/* webpackChunkName: "enter-known-characters" */ '../views/Welcome/EnterKnownCharacters.vue'),
   },
 ];
 
