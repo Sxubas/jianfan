@@ -64,7 +64,7 @@ export default defineComponent({
           return;
         }
 
-        await firebase.firestore().doc(`users/${user.uid}`).set({ learning: selectedWritingSystem.value });
+        await firebase.firestore().doc(`users/${user.uid}`).set({ learning: selectedWritingSystem.value }, { merge: true });
         router.push({
           name: 'Enter Known Characters',
           params: { learning: selectedWritingSystem.value },

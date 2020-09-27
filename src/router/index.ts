@@ -40,6 +40,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Enter Known Characters',
     component: () => import(/* webpackChunkName: "enter-known-characters" */ '../views/Welcome/EnterKnownCharacters.vue'),
   },
+  {
+    path: '/welcome/characters/backfill',
+    name: 'Characters backfill',
+    component: () => import(/* webpackChunkName: "characters-backfill" */ '../views/Welcome/CharactersBackfill.vue'),
+  },
 ];
 
 const router = createRouter({
