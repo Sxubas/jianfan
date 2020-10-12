@@ -1,16 +1,11 @@
-export type Definition = {
-  simplified: string;
-  traditional: string;
-  pronunciation: string;
-  definitions: string[];
-};
+import { Character } from '@/models.d.ts';
 
 const lineRegex = /(\S+)\s+(\S+)\s+\[([^\]]*)\]\s+\/(.*)\/\s*$/;
 
-export const dictionary: {[key: string]: Definition} = {};
+export const dictionary: {[key: string]: Character} = {};
 
-const parse = (contents: string): Definition[] => {
-  const definitions: Definition[] = [];
+const parse = (contents: string): Character[] => {
+  const definitions: Character[] = [];
   const lines = contents.split('\n');
   lines.forEach((line, i) => {
     if (line.startsWith('#') || line === '') return; // skip comments and blanks

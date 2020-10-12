@@ -10,6 +10,13 @@
       <span class="link-text">Home</span>
     </router-link>
     <router-link
+      to="/collection"
+      class="link"
+    >
+      <i class="material-icons-round">apps</i>
+      <span class="link-text">Collection</span>
+    </router-link>
+    <router-link
       to="/learn"
       class="link"
     >

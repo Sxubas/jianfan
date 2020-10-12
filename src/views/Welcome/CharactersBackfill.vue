@@ -78,7 +78,8 @@ import {
   computed, defineComponent, onMounted, onUnmounted, ref,
 } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { initializeDictionary, dictionary, Definition } from '@/cedict';
+import { Character } from '@/models.d.ts';
+import { initializeDictionary, dictionary } from '@/cedict';
 import pinyin from 'pinyin-tone-converter';
 
 import * as firebase from 'firebase/app';
@@ -103,7 +104,7 @@ export default defineComponent({
 
     const known = opposite[learning];
 
-    const currentCharacter = ref<Definition>();
+    const currentCharacter = ref<Character>();
     const currentCharacterHanzi = computed(() => {
       if (!currentCharacter.value) {
         return '';
@@ -123,7 +124,7 @@ export default defineComponent({
       return pinyin(currentCharacter.value.pronunciation);
     });
 
-    const backfillCharacters = ref<Definition[]>([]);
+    const backfillCharacters = ref<Character[]>([]);
     const disableButtons = ref(false);
 
     const user = firebase.auth().currentUser;
@@ -177,7 +178,7 @@ export default defineComponent({
     };
 
     const removeAlreadyLearntCharacters = (
-      fetchedBackfillCharacters: Definition[],
+      fetchedBackfillCharacters: Character[],
       knownCharacters: firebase.firestore.QuerySnapshot<firebase.firestore.DocumentData>,
     ) => {
       knownCharacters.docs.forEach((knownCharacter) => {
@@ -200,7 +201,7 @@ export default defineComponent({
 
       await initializeDictionary();
 
-      const fetchedBackfillCharacters: Definition[] = [];
+      const fetchedBackfillCharacters: Character[] = [];
       await Promise.all(HSKLevelRange.map(async (level) => {
         const response = await fetch(`/characters_per_level/HSK_${level}.txt`);
         const text = await response.text();
