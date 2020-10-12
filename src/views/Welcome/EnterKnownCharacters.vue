@@ -46,8 +46,8 @@
       character you learn.
     </p>
     <p v-else>
-      We are going to show you all the characters from {{ HSKRange }}. For each character,
-      you have to mark it as known or unknown. Don't feel pressured, after this you will
+      We are going to show you all the characters from HSK 1. For each character,
+      you have to mark it as known or unknown. Don't feel under pressure, after this you will
       be able to add any other {{ known }} character you learn.
     </p>
     <span>
@@ -131,7 +131,13 @@ export default defineComponent({
       }
 
       await firebase.firestore().doc(`users/${user.uid}`).update({ maxHSKLevel: maxHSKLevelNumber.value });
-      router.push({ name: 'Characters backfill', params: { maxHSKLevel: maxHSKLevelNumber.value } });
+      router.push({
+        name: 'Characters backfill',
+        params: {
+          maxHSKLevel: maxHSKLevelNumber.value,
+          learning,
+        },
+      });
     };
 
     return {
