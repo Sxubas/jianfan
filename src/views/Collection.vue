@@ -1,7 +1,7 @@
 <template>
   <div class="collection-view-container">
     <div class="header-container">
-      <h1>Collection</h1>
+      <h2>Collection</h2>
       <div class="settings-container">
         <div class="writing-system-container">
           <span>Show characters in</span>

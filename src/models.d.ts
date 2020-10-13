@@ -4,3 +4,9 @@ export interface Character {
   pronunciation: string;
   definitions: string[];
 }
+
+export interface User {
+  uid: string;
+  learning: 'simplified' | 'traditional';
+  maxHSKLevel: number;
+}
